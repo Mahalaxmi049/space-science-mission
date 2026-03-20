@@ -1,4 +1,9 @@
 import { useState } from "react"
+
+import earth from "./assets/Earth.jpg"
+import mars from "./assets/mars.webp"
+import jupiter from "./assets/Jupiter.webp"
+
 import "./App.css"
 
 function App() {
@@ -10,9 +15,21 @@ function App() {
   const [marsWeight, setMarsWeight] = useState("")
 
   const planets = [
-    {name:"Earth", fact:"Earth is the only planet known to support life."},
-    {name:"Mars", fact:"Mars is called the Red Planet due to iron oxide."},
-    {name:"Jupiter", fact:"Jupiter is the largest planet in our solar system."}
+    {
+      name: "Earth",
+      image: earth,
+      fact: "Earth is the only planet known to support life."
+    },
+    {
+      name: "Mars",
+      image: mars,
+      fact: "Mars is called the Red Planet due to iron oxide."
+    },
+    {
+      name: "Jupiter",
+      image: jupiter,
+      fact: "Jupiter is the largest planet in our solar system."
+    }
   ]
 
   const calculateMarsWeight = () => {
@@ -21,34 +38,40 @@ function App() {
   }
 
   return (
-    <div style={{
-      minHeight:"100vh",
-      background:"linear-gradient(to bottom,#020111,#191621)",
-      color:"white",
-      textAlign:"center",
-      paddingTop:"100px",
-      fontFamily:"Arial"
-    }}>
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "linear-gradient(to bottom,#020111,#191621)",
+        color: "white",
+        textAlign: "center",
+        paddingTop: "80px",
+        fontFamily: "Arial"
+      }}
+    >
 
       {!showExplorer ? (
 
         <div>
 
-          <h1 style={{fontSize:"50px"}}>🚀 Space Science Mission</h1>
+          <h1 style={{ fontSize: "50px" }}>
+            🚀 Space Science Mission
+          </h1>
 
-          <p>Explore planets and learn space science</p>
+          <p style={{ fontSize: "18px" }}>
+            Explore planets and learn space science
+          </p>
 
           <button
             onClick={() => setShowExplorer(true)}
             style={{
-              marginTop:"30px",
-              padding:"12px 25px",
-              fontSize:"18px",
-              background:"#6C63FF",
-              border:"none",
-              borderRadius:"8px",
-              color:"white",
-              cursor:"pointer"
+              marginTop: "30px",
+              padding: "12px 25px",
+              fontSize: "18px",
+              background: "#6C63FF",
+              border: "none",
+              borderRadius: "8px",
+              color: "white",
+              cursor: "pointer"
             }}
           >
             Start Exploring
@@ -62,12 +85,14 @@ function App() {
 
           <h1>🪐 Planet Explorer</h1>
 
-          <div style={{
-            display:"flex",
-            justifyContent:"center",
-            gap:"20px",
-            marginTop:"40px"
-          }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "30px",
+              marginTop: "40px"
+            }}
+          >
 
             {planets.map((planet) => (
 
@@ -75,13 +100,24 @@ function App() {
                 key={planet.name}
                 onClick={() => setSelectedPlanet(planet.fact)}
                 style={{
-                  background:"#222",
-                  padding:"20px",
-                  borderRadius:"10px",
-                  cursor:"pointer"
+                  background: "#222",
+                  padding: "20px",
+                  borderRadius: "10px",
+                  cursor: "pointer",
+                  width: "150px"
                 }}
               >
-                {planet.name}
+
+                <img
+                  src={planet.image}
+                  style={{
+                    width: "90px",
+                    height: "90px",
+                    objectFit: "contain"
+                  }}
+                />
+
+                <h3>{planet.name}</h3>
 
               </div>
 
@@ -91,15 +127,17 @@ function App() {
 
           {selectedPlanet && (
 
-            <div style={{
-              marginTop:"40px",
-              background:"#333",
-              padding:"20px",
-              borderRadius:"10px",
-              width:"400px",
-              marginLeft:"auto",
-              marginRight:"auto"
-            }}>
+            <div
+              style={{
+                marginTop: "40px",
+                background: "#333",
+                padding: "20px",
+                borderRadius: "10px",
+                width: "400px",
+                marginLeft: "auto",
+                marginRight: "auto"
+              }}
+            >
 
               <h2>Planet Fact</h2>
 
@@ -109,15 +147,17 @@ function App() {
 
           )}
 
-          <div style={{
-            marginTop:"50px",
-            background:"#222",
-            padding:"30px",
-            borderRadius:"10px",
-            width:"400px",
-            marginLeft:"auto",
-            marginRight:"auto"
-          }}>
+          <div
+            style={{
+              marginTop: "50px",
+              background: "#222",
+              padding: "30px",
+              borderRadius: "10px",
+              width: "400px",
+              marginLeft: "auto",
+              marginRight: "auto"
+            }}
+          >
 
             <h2>🚀 Mars Gravity Simulator</h2>
 
@@ -126,35 +166,35 @@ function App() {
             <input
               type="number"
               value={earthWeight}
-              onChange={(e)=>setEarthWeight(e.target.value)}
+              onChange={(e) => setEarthWeight(e.target.value)}
               placeholder="Weight in kg"
               style={{
-                padding:"10px",
-                borderRadius:"5px",
-                border:"none",
-                marginTop:"10px"
+                padding: "10px",
+                borderRadius: "5px",
+                border: "none",
+                marginTop: "10px"
               }}
             />
 
-            <br/>
+            <br />
 
             <button
               onClick={calculateMarsWeight}
               style={{
-                marginTop:"15px",
-                padding:"10px 20px",
-                background:"#6C63FF",
-                border:"none",
-                borderRadius:"5px",
-                color:"white",
-                cursor:"pointer"
+                marginTop: "15px",
+                padding: "10px 20px",
+                background: "#6C63FF",
+                border: "none",
+                borderRadius: "5px",
+                color: "white",
+                cursor: "pointer"
               }}
             >
               Calculate
             </button>
 
             {marsWeight && (
-              <p style={{marginTop:"20px"}}>
+              <p style={{ marginTop: "20px" }}>
                 Your weight on Mars: <b>{marsWeight} kg</b>
               </p>
             )}
