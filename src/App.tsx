@@ -4,25 +4,31 @@ import "./App.css"
 function App() {
 
   const [showExplorer, setShowExplorer] = useState(false)
+  const [selectedPlanet, setSelectedPlanet] = useState("")
+
+  const planets = [
+    {name:"Earth", fact:"Earth is the only planet known to support life."},
+    {name:"Mars", fact:"Mars is called the Red Planet due to iron oxide."},
+    {name:"Jupiter", fact:"Jupiter is the largest planet in our solar system."}
+  ]
 
   return (
     <div style={{
-      minHeight: "100vh",
-      background: "linear-gradient(to bottom,#020111,#191621)",
-      color: "white",
-      textAlign: "center",
-      paddingTop: "100px",
-      fontFamily: "Arial"
+      minHeight:"100vh",
+      background:"linear-gradient(to bottom,#020111,#191621)",
+      color:"white",
+      textAlign:"center",
+      paddingTop:"100px",
+      fontFamily:"Arial"
     }}>
 
       {!showExplorer ? (
 
         <div>
+
           <h1 style={{fontSize:"50px"}}>🚀 Space Science Mission</h1>
 
-          <p style={{fontSize:"20px", marginTop:"10px"}}>
-            Explore planets, learn physics and test your knowledge
-          </p>
+          <p>Explore planets and learn space science</p>
 
           <button
             onClick={() => setShowExplorer(true)}
@@ -39,6 +45,7 @@ function App() {
           >
             Start Exploring
           </button>
+
         </div>
 
       ) : (
@@ -47,8 +54,6 @@ function App() {
 
           <h1>🪐 Planet Explorer</h1>
 
-          <p>Select a planet to learn more</p>
-
           <div style={{
             display:"flex",
             justifyContent:"center",
@@ -56,19 +61,45 @@ function App() {
             marginTop:"40px"
           }}>
 
-            <div style={{background:"#222", padding:"20px", borderRadius:"10px"}}>
-              🌍 Earth
-            </div>
+            {planets.map((planet) => (
 
-            <div style={{background:"#222", padding:"20px", borderRadius:"10px"}}>
-              🔴 Mars
-            </div>
+              <div
+                key={planet.name}
+                onClick={() => setSelectedPlanet(planet.fact)}
+                style={{
+                  background:"#222",
+                  padding:"20px",
+                  borderRadius:"10px",
+                  cursor:"pointer"
+                }}
+              >
+                {planet.name}
 
-            <div style={{background:"#222", padding:"20px", borderRadius:"10px"}}>
-              🟡 Jupiter
-            </div>
+              </div>
+
+            ))}
 
           </div>
+
+          {selectedPlanet && (
+
+            <div style={{
+              marginTop:"40px",
+              background:"#333",
+              padding:"20px",
+              borderRadius:"10px",
+              width:"400px",
+              marginLeft:"auto",
+              marginRight:"auto"
+            }}>
+
+              <h2>Planet Fact</h2>
+
+              <p>{selectedPlanet}</p>
+
+            </div>
+
+          )}
 
         </div>
 
