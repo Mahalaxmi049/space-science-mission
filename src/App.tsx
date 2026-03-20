@@ -1,11 +1,6 @@
-import { useState } from "react"
 import "./App.css"
 
 function App() {
-
-  // React state → stores dynamic data
-  const [count, setCount] = useState(0)
-
   return (
     <div style={{
       height: "100vh",
@@ -18,36 +13,25 @@ function App() {
       fontFamily: "Arial"
     }}>
 
-      {/* Title */}
-      <h1 style={{
-        fontSize: "48px",
-        marginBottom: "20px"
-      }}>
-        🚀 Space Mission Explorer
+      <h1 style={{fontSize:"50px"}}>
+        🚀 Space Science Mission
       </h1>
 
-      {/* Description */}
-      <p style={{
-        fontSize: "18px",
-        marginBottom: "30px"
-      }}>
-        Welcome to your Space Science Internship Project
+      <p style={{fontSize:"20px", marginTop:"10px"}}>
+        Explore planets, learn physics and test your knowledge
       </p>
 
-      {/* Counter Button */}
-      <button
-        onClick={() => setCount(count + 1)}
-        style={{
-          padding: "15px 30px",
-          fontSize: "18px",
-          backgroundColor: "#6C63FF",
-          border: "none",
-          borderRadius: "10px",
-          color: "white",
-          cursor: "pointer"
-        }}
-      >
-        Clicked {count} times
+      <button style={{
+        marginTop:"30px",
+        padding:"12px 25px",
+        fontSize:"18px",
+        background:"#6C63FF",
+        border:"none",
+        borderRadius:"8px",
+        color:"white",
+        cursor:"pointer"
+      }}>
+        Start Exploring
       </button>
 
     </div>
